@@ -1,0 +1,155 @@
+interface IAnimal {
+
+
+
+    public abstract boolean run(double distance);
+
+
+
+    public abstract boolean swim(double distance);
+
+
+
+    public abstract boolean jump(double distance);
+
+}
+
+
+
+public abstract class Animal implements IAnimal {
+
+    protected String name;
+
+    protected double rvalue;
+
+    protected double svalue;
+
+    protected double jvalue;
+
+
+
+    public boolean run(double distance) {
+
+        return (this.rvalue >= distance);
+
+    }
+
+
+
+    public boolean swim(double distance) {
+
+        return (this.svalue >= distance);
+
+    }
+
+
+
+    public boolean jump(double distance) {
+
+        return (this.jvalue >= distance);
+
+    }
+
+
+
+    public Animal(String name, double rvalue, double svalue, double jvalue){
+
+        this.name = name;
+
+        this.rvalue = rvalue;
+
+        this.svalue = svalue;
+
+        this.jvalue = jvalue;
+
+    }
+
+}
+
+
+
+
+
+//////////////////////////////////////////////////////
+
+
+
+public class Cat extends Animal {
+
+    Cat(String name){
+
+        super(name,200,0,2);
+
+    }
+
+    @Override
+
+    public boolean swim(double distance) {
+
+        return false;
+
+    }
+
+}
+
+
+
+//////////////////////////////////////////
+
+
+
+public class Dog extends Animal{
+
+    Dog(String name){
+
+        super(name,500,10,0.5);
+
+    }
+
+}
+
+
+
+
+
+/////////////////////////////////////
+
+
+
+import java.util.Scanner;
+
+
+
+public class Test {
+
+    public static void main(String[] args) {
+
+        Cat cat = new Cat("Barsik");
+
+        Dog dog = new Dog("Sharik");
+
+
+
+        System.out.println("Cat:");
+
+        System.out.println("Run: " + cat.run(150));// 200
+
+        System.out.println("Swim: " + cat.swim(-10)); // 0
+
+        System.out.println("Jump:" + cat.jump(1.5)); //2
+
+
+
+        System.out.println("Dog:");
+
+        System.out.println("Run: " + dog.run(300));//500
+
+        System.out.println("Swim: " + dog.swim(10.1));//10
+
+        System.out.println("Jump:" + dog.jump(0.4));//0.5
+
+
+
+    }
+
+}
